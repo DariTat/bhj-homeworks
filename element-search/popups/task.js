@@ -18,4 +18,5 @@ let showArray = [...showSuccess];
 
 showArray[0].onclick = function(){
     modalSuccess.style.display = 'flex';
+    modal.style.display = 'none';
 }
