@@ -1,13 +1,19 @@
-const rotator = document.querySelectorAll(".rotator__case");
-let rotatorArr = Array.from(rotator);
+const rotator = document.querySelector(".rotator");
+let el = rotator.firstElementChild;
 
 function showRotator(){
-    let index = rotatorArr.findIndex((item) => item.className.includes('rotator__case_active'));
-    rotatorArr[index].classList.remove('rotator__case_active');
-    (index < (rotatorArr.length - 1))? ++index : index = 0;
-    let speed = rotatorArr[index].dataset.speed;
-    rotatorArr[index].style.color = rotatorArr[index].dataset.color;
-    rotatorArr[index].classList.add('rotator__case_active');  
+    el.classList.remove('rotator__case_active');
+    el = el.nextElementSibling;
+    if(el == null){
+        el = rotator.firstElementChild;
+    }
+    el.style.color = el.dataset.color
+    el.classList.add('rotator__case_active');
+    
+    let speed = el.dataset.speed;
+    timer = setTimeout(showRotator, speed);
 }
 
-setInterval(() => {showRotator()}, 1000);
+let timer = setTimeout(() => {
+    showRotator()
+}, 1000);
