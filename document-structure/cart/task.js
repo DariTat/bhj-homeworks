@@ -33,15 +33,13 @@ function addProduct(){
     productClone.appendChild(count);
     
     let elements = Array.from(cart.querySelectorAll('.cart__product'));
-    if(elements.length == 0){
-        cart.appendChild(productClone);
-    } else if(elements.some((element) => element.dataset.id == productClone.dataset.id)){
-        let element = elements.find(item => item.dataset.id == productClone.dataset.id)
+    let element = elements.find(item => item.dataset.id == productClone.dataset.id)
+    if(element){
         element.childNodes[1].innerText = Number(element.childNodes[1].innerText) + Number(countProduct);
     }else{
          cart.appendChild(productClone);
     }
-    }
+}
 
 controls.forEach((control) => control.addEventListener('click', controlProduct));
 add.forEach((button)=> button.addEventListener('click', addProduct) )
