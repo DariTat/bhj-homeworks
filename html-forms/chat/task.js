@@ -21,11 +21,6 @@ function submit(){
         <div class="message__text">${input.value}</div>
         </div>
     `;
-}
-function submitRobot(){
-    if(input.value === "") {
-        return false;
-    }
     let value = ['Здравстуйте', 'Добрый день! Дождитесь ответа оператора.', 'Я не хочу с Вами общаться. До свидания!', 'Данный абонент не доступен.']
     let rand = Math.floor(Math.random() * value.length);
     message.innerHTML += `
@@ -33,12 +28,12 @@ function submitRobot(){
     <div class="message__time">${timeNow}</div>
     <div class="message__text">${value[rand]}</div>
     </div>
-`;
-}  
+   `;   
+    input.value = ''; 
+}
+
 document.addEventListener('keyup', function(e){
     if (e.keyCode === 13) {
-        submit();
-        submitRobot();
-       
+        submit();   
     }
 }) 
