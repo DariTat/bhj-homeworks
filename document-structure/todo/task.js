@@ -17,6 +17,7 @@ form.onsubmit = function(){
     remove.addEventListener('click', ()=>{
         remove.parentElement.remove();
     }) 
+    return false;
 }
 
 
